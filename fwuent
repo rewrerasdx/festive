@@ -1,4 +1,4 @@
---[[
+ui = (function() --[[
     Fluent Interface Suite
     This script is not intended to be modified.
     To view the source code, see the 'src' folder on GitHub!
@@ -187,7 +187,6 @@ end, function()
     local j = h.New
     return function(k)
         local l = {}
-        print(l:GetFullName())
         l.Frame = j('Frame',
             { Size = UDim2.fromScale(1, 1), BackgroundTransparency = 0.9, BackgroundColor3 = Color3.fromRGB(255, 255, 255), BorderSizePixel = 0 },
             { j('ImageLabel',
@@ -211,6 +210,13 @@ end, function()
                 { j('UICorner', { CornerRadius = UDim.new(0, 8) }), j('UIStroke',
                     { Transparency = 0.5, Thickness = 1, ThemeTag = { Color = 'AcrylicBorder' } }) }) })
         local m
+        local testy1 = Instance.new("ImageLabel", l.Frame)
+        testy1.Size = UDim2.fromScale(0.7, 0.7)
+        testy1.BackgroundTransparency = 1
+        testy1.ImageTransparency = 0.5
+        testy1.Image = "rbxassetid://136687138607013"
+        testy1.AnchorPoint = Vector2.new(0.5, 0.5)
+        testy1.Position = UDim2.fromScale(0.5, 0.5)
         if e(d.Parent.Parent).UseAcrylic then
             m = i()
             m.Frame.Parent = l.Frame
@@ -2417,3 +2423,21 @@ do
         if M then return J(M) end
     end
 end
+ end)()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+
+local Window = Fluent:CreateWindow({
+    Title = "Festive Hub ",
+    SubTitle = "Fluent " .. ui.Version,
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Acrylic = true,
+    Theme = "Amethyst",
+    MinimizeKey = Enum.KeyCode.LeftControl
+})
+
+local Tabs = {
+    Farming = Window:AddTab({ Title = "Farming", Icon = "rbxassetid://86225343401774" }),
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+}
